@@ -1,0 +1,22 @@
+## http://thekelleys.org.uk/dnsmasq/doc.html
+
+bind-interfaces
+listen-address=10.1.1.1
+
+dhcp-range=10.1.1.2,10.1.1.9,7d
+
+## Bogus private reverse lookups. All reverse lookups for private IP 
+## ranges (ie 192.168.x.x, etc) which are not found in /etc/hosts or
+##  the DHCP leases file are answered with "no such domain" rather 
+## than being forwarded upstream. 
+bogus-priv
+
+no-resolv
+no-hosts
+no-poll
+
+log-dhcp
+log-queries
+
+addn-hosts=/etc/dnsmasq.hosts
+address=/manuals.playstation.net/10.1.1.1
