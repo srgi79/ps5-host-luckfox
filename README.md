@@ -25,9 +25,9 @@ Static IP: 172.32.0.70
 cd
 sudo apt update
 sudo apt install dnsmasq -y
-wget https://github.com/srgi79/ps5-host/raw/refs/heads/main/ps5-host-nossl/main.py
-wget https://github.com/srgi79/ps5-host/raw/refs/heads/main/ps5-hostap-dnsmasq/build/config/dnsmasq.hosts
-wget https://github.com/srgi79/ps5-host/raw/refs/heads/main/ps5-hostap-dnsmasq/build/config/dnsmasqd.conf
+wget https://github.com/srgi79/ps5-host-luckfox/raw/refs/heads/main/main.py
+wget https://github.com/srgi79/ps5-host-luckfox/raw/refs/heads/main/dnsmasq.hosts
+wget https://github.com/srgi79/ps5-host-luckfox/raw/refs/heads/main/dnsmasq.conf
 ```
 
 ## Download your prefered idlesauce exploit
