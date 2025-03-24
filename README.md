@@ -28,7 +28,16 @@ sudo apt install dnsmasq -y
 wget https://github.com/srgi79/ps5-host/raw/refs/heads/main/ps5-host-nossl/main.py
 wget https://github.com/srgi79/ps5-host/raw/refs/heads/main/ps5-hostap-dnsmasq/build/config/dnsmasq.hosts
 wget https://github.com/srgi79/ps5-host/raw/refs/heads/main/ps5-hostap-dnsmasq/build/config/dnsmasqd.conf
-git clone https://github.com/idlesauce/PS5-Exploit-Host.git
+```
+
+## Download your prefered idlesauce exploit
+### IPv6 (3.XX - 4.XX)
+```
+git clone https://github.com/idlesauce/PS5-Exploit-Host.git ps5_host/
+```
+### UMTX2 (1.00 - 5.50)
+```
+git clone https://github.com/idlesauce/umtx2.git ps5_host/
 ```
 
 ## Disable internet share
@@ -98,9 +107,9 @@ sudo systemctl status static-ip.service
 ## Configure DNS Server
 ```
 cd
-cp dnsmasqd.conf /etc/
-cp dnsmasq.hosts /etc/
-cp main.py PS5-Exploit-Host/
+sudo cp dnsmasqd.conf /etc/dnsmasqd.conf
+sudo cp dnsmasq.hosts /etc/dnsmasqd.hosts
+cp main.py ps5_host
 ```
 
 ## Enable PS5 host
@@ -114,7 +123,7 @@ Add the service content.
 Description=PS5 Host
 
 [Service]
-ExecStart=/bin/bash -c 'cd /home/pico/PS5-Exploit-Host && python3 main.py'
+ExecStart=/bin/bash -c 'cd /home/pico/ps5_host && python3 main.py'
 User=root
 
 [Install]
