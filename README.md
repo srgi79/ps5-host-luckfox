@@ -110,7 +110,8 @@ sudo systemctl status static-ip.service
 cd
 sudo cp dnsmasqd.conf /etc/dnsmasqd.conf
 sudo cp dnsmasq.hosts /etc/dnsmasqd.hosts
-cp main.py ps5_host
+cp main.py ps5_host/
+cp main_ssl.py ps5_host/
 ```
 
 ## Enable PS5 host - Using PKG
