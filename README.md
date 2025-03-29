@@ -26,6 +26,7 @@ cd
 sudo apt update
 sudo apt install dnsmasq -y
 wget https://github.com/srgi79/ps5-host-luckfox/raw/refs/heads/main/main.py
+wget https://github.com/srgi79/ps5-host-luckfox/raw/refs/heads/main/main_ssl.py
 wget https://github.com/srgi79/ps5-host-luckfox/raw/refs/heads/main/dnsmasq.hosts
 wget https://github.com/srgi79/ps5-host-luckfox/raw/refs/heads/main/dnsmasq.conf
 ```
@@ -112,7 +113,7 @@ sudo cp dnsmasq.hosts /etc/dnsmasqd.hosts
 cp main.py ps5_host
 ```
 
-## Enable PS5 host
+## Enable PS5 host - Using PKG
 Create the service file.
 ```
 sudo nano /etc/systemd/system/ps5-host.service
@@ -148,6 +149,43 @@ sudo systemctl start ps5-host.service
 Check the status.
 ```
 sudo systemctl status ps5-host.service
+```
+## Enable PS5 host - Using PS5 Manual
+Create the service file.
+```
+sudo nano /etc/systemd/system/ps5-host-ssl.service
+```
+Add the service content.
+```
+[Unit]
+Description=PS5 Host SSL
+
+[Service]
+ExecStart=/bin/bash -c 'cd /home/pico/ps5_host && python3 main_ssl.py'
+User=root
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Reload systemd.
+```
+sudo systemctl daemon-reload
+```
+
+Enable the service.
+```
+sudo systemctl enable ps5-host-ssl.service
+```
+
+Test the service.
+```
+sudo systemctl start ps5-host-ssl.service
+```
+
+Check the status.
+```
+sudo systemctl status ps5-host-ssl.service
 ```
 
 ## Reboot
