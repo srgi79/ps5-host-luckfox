@@ -112,6 +112,7 @@ sudo cp dnsmasqd.conf /etc/dnsmasqd.conf
 sudo cp dnsmasq.hosts /etc/dnsmasqd.hosts
 cp main.py ps5_host/
 cp main_ssl.py ps5_host/
+cp ps5_host/ ps5_host_ssl/ -r
 ```
 
 ## Enable PS5 host - Using PKG
@@ -162,7 +163,7 @@ Add the service content.
 Description=PS5 Host SSL
 
 [Service]
-ExecStart=/bin/bash -c 'cd /home/pico/ps5_host && python3 main_ssl.py'
+ExecStart=/bin/bash -c 'cd /home/pico/ps5_host_ssl && python3 main_ssl.py'
 User=root
 
 [Install]
