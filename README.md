@@ -108,8 +108,8 @@ sudo systemctl status static-ip.service
 ## Configure DNS Server
 ```
 cd
-sudo cp dnsmasqd.conf /etc/dnsmasqd.conf
-sudo cp dnsmasq.hosts /etc/dnsmasqd.hosts
+sudo cp dnsmasq.conf /etc/dnsmasq.conf
+sudo cp dnsmasq.hosts /etc/dnsmasq.hosts
 cp main.py ps5_host/
 cp main_ssl.py ps5_host/
 cp ps5_host/ ps5_host_ssl/ -r
