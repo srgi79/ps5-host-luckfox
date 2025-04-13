@@ -23,8 +23,10 @@ Static IP: 172.32.0.70
 ## Download the files in the board
 ```
 cd
-sudo apt update
-sudo apt install dnsmasq -y
+sudo dpkg-reconfigure tzdata
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install dnsmasq -y
 wget https://github.com/srgi79/ps5-host-luckfox/raw/refs/heads/main/main.py
 wget https://github.com/srgi79/ps5-host-luckfox/raw/refs/heads/main/main_ssl.py
 wget https://github.com/srgi79/ps5-host-luckfox/raw/refs/heads/main/dnsmasq.hosts
