@@ -15,10 +15,12 @@ def calculate_file_hash(file_path):
 
 def generate_cache_manifest(directory_path, include_payloads=True):
     manifest = ["CACHE MANIFEST"]
+    manifest.append("")
     
     for root, _, files in os.walk(directory_path):
         for file in files:
-            if '.appcache' in file:
+            lower_file = file.lower()
+            if lower_file.endswith('.appcache') or lower_file.endswith('.manifest') or lower_file.endswith('.exe') or lower_file.endswith('.py'): 
                 continue
             file_path = os.path.join(root, file)
 
@@ -26,12 +28,21 @@ def generate_cache_manifest(directory_path, include_payloads=True):
                 continue
             file_hash = calculate_file_hash(file_path)
             
+            """if args.cloudflare_workaround and file == 'index.html':
+                file_path = file_path.replace("index.html","")
+                if file_path.isspace() or file_path == '':
+                    file_path = '/'"""
+            
             manifest_path = os.path.relpath(file_path, directory_path)
             if manifest_path.isspace() or manifest_path == '' or manifest_path == '.':
                 manifest_path = '/'
                 
             manifest_path = manifest_path.replace("\\","/")
             manifest.append(manifest_path + " #" + file_hash)
+
+    manifest.append("")
+    manifest.append("NETWORK:")
+    manifest.append("*")
 
     return manifest
 
